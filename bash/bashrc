@@ -1,0 +1,55 @@
+# ============ Basic vars ============
+# ====================================
+export PATH="${PATH}:$HOME/.local/bin"
+export PATH="${PATH}:$HOME/.cargo/bin"
+
+# CD paths
+# export CDPATH=".:~:~/Downloads:~/Documents:~/Pictures:~/Videos:~/Music:~/Work:~/Work/codeberg"
+
+# XDG Directories
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+# History
+HISTCONTROL=ignoreboth
+HISTSIZE=10000
+HISTFILESIZE=10000
+
+shopt -s histappend
+
+# Ignore case-sensitivity for autocompletion
+bind 'set completion-ignore-case on'
+
+# ======== Alias =========
+# ========================
+# cd alias
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+alias vpn-list='ls /etc/wireguard/*.conf | xargs -n1 basename | sed s/.conf//'
+
+# wireguard protonvpn
+vpn() {
+  local current=$(wg show interfaces)
+  [[ -n "$current" ]] && wg-quick down "$current"
+  [[ "$1" != "down" ]] && wg-quick up "proton-$1"
+}
+
+# ======== Prompt ===========
+# ===========================
+PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+# ANSI color codes
+readonly BLUE="\[\033[0;34m\]"
+readonly PURPLE="\[\033[0;35m\]"
+readonly RESET="\[\033[0m\]"
+
+# Function to get Git branch name
+parse_git_branch() {
+  git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
+}
+
+# Simple bash prompt with relative path & git status
+PS1="${BLUE}\w${PURPLE} \$(parse_git_branch)${RESET}\$ "
