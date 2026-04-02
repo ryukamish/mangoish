@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+power_args=$(printf '%b' 'Lock\nLogout\nRestart\nSuspend\nHibernate\nPoweroff' |
+  rofi -dmenu -p "" -i -theme-str 'window {width: 10em; padding: 2px; height: 22em;}')
+
+# TODO: lock, logout not working
+case "$power_args" in
+*Lock)
+  swaylock
+  # loginctl lock-sessions
+  ;;
+*Logout)
+  loginctl terminate-sessions
+  ;;
+*Restart)
+  loginctl reboot
+  ;;
+*Suspend)
+  loginctl suspend
+  ;;
+*Hibernate)
+  loginctl hibernate
+  ;;
+*Shutdown)
+  loginctl poweroff
+  ;;
+esac
