@@ -1,0 +1,98 @@
+{
+  "modules-left": [
+    "ext/workspaces",
+    "custom/sep",
+    "dwl/window#layout"
+  ],
+  "modules-right": [
+    "tray",
+    "custom/sep",
+    "network",
+    "custom/sep",
+    "pulseaudio",
+    "custom/sep",
+    "bluetooth",
+    "custom/sep",
+    "memory",
+    "custom/sep",
+    "battery",
+    "custom/sep",
+    "clock"
+  ],
+
+  "clock": {
+	  "format": "{:%a, %b %d - %H:%M}",
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "cpu": {
+    "format": "CPU: {usage}%",
+    "tooltip": false
+  },
+  "memory": {
+    "format": "Mem: {used}GiB"
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "BAT: {capacity}%",
+    "format-plugged": "BAT: {capacity}% "
+  },
+"bluetooth": {
+	"format": "BT: {num_connections}",
+	"format-disabled": "<span color='#aaaaaa'>󰂲</span>",
+	"format-connected": "BT: {num_connections}",
+	"tooltip-format": "Devices connected: {num_connections}\n{device_alias} at {device_battery_percentage}%",
+	"on-click": "blueman-manager",
+	"on-click-right": "rfkill toggle bluetooth"
+},
+"pulseaudio": {
+	"format": "AUDIO: {volume}%",
+	"on-click": "pavucontrol",
+	"tooltip-format": "{desc}",
+	"scroll-step": 5,
+	"format-muted": "AUDIO: MUTED",
+	"format-icons": {
+		"headphone": "",
+		"default": [
+			"",
+			"",
+			""
+		]
+	}
+},
+"network": {
+	"interface": "wlo1",
+	"format-wifi": "WIFI: {essid}",
+	"format-ethernet": "ETH: {ipaddr}/<span color='#aaaaaa'>{cidr}</span>",
+	"format-disconnected": "WIFI: DC'D",
+	"tooltip-format": "{ifname} via {gwaddr}",
+	"tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+	"tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+	"tooltip-format-disconnected": "Disconnected",
+	"interval": 5,
+	"on-click": "alacritty --title Wifitui -e wifitui",
+	"on-click-right": "rfkill toggle wlan"
+},
+"ext/workspaces": {
+    "format": "{icon}",
+    "ignore-hidden": false,
+    "on-click": "activate",
+    "sort-by-id": true
+  },
+  "dwl/tags": {
+    "num-tags": 9
+  },
+  "dwl/window#layout": {
+    "format": "[{layout}]"
+  },
+  "dwl/window#title": {
+    "format": "{title}"
+  },
+  "custom/sep": {
+    "format": "|",
+    "interval": 0
+  }
+}
