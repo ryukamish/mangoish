@@ -27,15 +27,9 @@ bind 'set completion-ignore-case on'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-
-alias vpn-list='ls /etc/wireguard/*.conf | xargs -n1 basename | sed s/.conf//'
-
-# wireguard protonvpn
-vpn() {
-  local current=$(wg show interfaces)
-  [[ -n "$current" ]] && wg-quick down "$current"
-  [[ "$1" != "down" ]] && wg-quick up "proton-$1"
-}
+alias ls='ls --color=auto --group-directories-first'
+alias la='ls -a --color=auto --group-directories-first'
+alias ll='ls -l --color=auto --group-directories-first'
 
 # ======== Prompt ===========
 # ===========================
