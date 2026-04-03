@@ -1,0 +1,31 @@
+# Global settings
+font=JetBrainsMono Nerd Font 11
+width=300
+margin=10
+padding=10
+border-size=2
+border-radius=5
+default-timeout=3000
+ignore-timeout=0
+max-visible=3
+layer=overlay
+anchor=top-right
+
+# Colors
+
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#b4befe
+progress-color=over #313244
+
+# this section should be last
+[urgency=low]
+default-timeout=3000
+
+[urgency=normal]
+default-timeout=10000
+
+[urgency=high]
+default-timeout=20000
+border-color=#fab387
+
