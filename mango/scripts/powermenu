@@ -6,22 +6,20 @@ power_args=$(printf '%b' 'Lock\nLogout\nRestart\nSuspend\nHibernate\nPoweroff' |
 # TODO: lock, logout not working
 case "$power_args" in
 *Lock)
-  swaylock
   # loginctl lock-sessions
   ;;
 *Logout)
-  loginctl terminate-sessions
   ;;
 *Restart)
-  loginctl reboot
+  systemctl reboot
   ;;
 *Suspend)
-  loginctl suspend
+  systemctl suspend
   ;;
 *Hibernate)
-  loginctl hibernate
+  systemctl hibernate
   ;;
 *Shutdown)
-  loginctl poweroff
+  systemctl shutdown
   ;;
 esac
