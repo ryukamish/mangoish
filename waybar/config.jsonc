@@ -13,6 +13,8 @@
 		"custom/sep",
 		"bluetooth",
 		"custom/sep",
+		"cpu",
+		"custom/sep",
 		"memory",
 		"custom/sep",
 		"battery",
@@ -22,6 +24,11 @@
 	"clock": {
 		"format": "{:%a, %b %d - %H:%M}",
 		"format-alt": "{:%Y-%m-%d}"
+	},
+	"cpu": {
+		"interval": 10,
+		"format": "CPU: {}%",
+		"max-length": 10
 	},
 	"memory": {
 		"format": "Mem: {used}GiB"
